@@ -77,3 +77,19 @@ new Repeatable({
 	max: 6,
 })
 ```
+
+### Callbacks
+
+You can pass functions to `onCreate` and `onRemove` to run when an element is created or removed. The element that was added or removed gets passed so you can manipulate the value, name attribute, etc.
+
+```javascript
+new Repeatable({
+	// ...
+	onCreate: (element) => {
+		console.log(`Added element:`, element)
+	},
+	onRemove: (element) => {
+		console.log(`Removed element:`, element)
+	},
+})
+```

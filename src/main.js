@@ -73,9 +73,10 @@ export default class Repeatable{
 		// Add element
 		this.parent.appendChild(el)
 		this.total++
-		this.updateUi()
-
-		this.toggleEmpty(`hide`)
+		this.update()
+		if(this.options.onCreate){
+			this.options.onCreate(el)
+		}
 	}
 	remove(el){
 		if(this.options.min && this.total <= this.options.min){
@@ -85,17 +86,23 @@ export default class Repeatable{
 		this.parent.removeChild(el)
 		this.total--
 		if(this.total < 0) this.total = 0
-		this.updateUi()
-		if(this.total === 0){
-			this.toggleEmpty(`show`)
+		this.update()
+		if(this.options.onRemove){
+			this.options.onRemove(el)
 		}
 	}
-	toggleEmpty(state){
+	update(){
+
 		if(this.emptyState){
-			this.emptyState.style.display = state === `show` ? `block` : `none`
+			if(this.total === 0){
+				this.emptyState.style.display = `block`
+			}
+			else{
+				this.emptyState.style.display = `none`
+			}
 		}
-	}
-	updateUi(){
+
+
 		if(this.options.incrementInputs){
 			let items = this.parent.querySelectorAll(this.options.template)
 			for(let i = 0; i < items.length; i++){
