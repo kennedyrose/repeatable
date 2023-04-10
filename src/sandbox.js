@@ -7,6 +7,7 @@ new Repeatable({
 	emptyState: `.no-people`,
 	min: 1,
 	max: 5,
+	incrementInputs: true,
 })
 
 const form = document.querySelector(`#people-form`)

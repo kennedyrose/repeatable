@@ -35,6 +35,7 @@ new Repeatable({
 	template: `.person-template`,
 	button: `.add-person`,
 	removeButton: `.remove-person`,
+	incrementInputs: true,
 })
 ```
 
@@ -91,5 +92,26 @@ new Repeatable({
 	onRemove: (element) => {
 		console.log(`Removed element:`, element)
 	},
+})
+```
+
+### Increment Input Names
+
+If you have multiple repeatable elements on the same page, you can set `incrementInputs` to `true` to increment the `[]` part of the `name` attributes in all inputs in the template. This is useful if you want to submit the data as an array of objects.
+
+```html
+<ul>
+	<li class="person-template">
+		<input name='people[][firstName]' placeholder='First Name' />
+		<input name='people[][lastName]' placeholder='Last Name' />
+		<button class="remove-person">Remove person</button>
+	</li>
+</ul>
+```
+
+```javascript
+new Repeatable({
+	// ...
+	incrementInputs: true,
 })
 ```

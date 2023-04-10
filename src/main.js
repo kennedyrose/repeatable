@@ -1,6 +1,6 @@
 const defaultOptions = {
 	startEmpty: true,
-	incrementInputs: true,
+	incrementInputs: false,
 }
 
 export default class Repeatable{
