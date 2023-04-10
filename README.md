@@ -1,17 +1,17 @@
-# @kennedyrose/repeatable
+# Repeatable
 
 A simple, lightweight, and no-dependency library for repeating elements with a button click. Useful for input groups in forms that need to be repeated so the user can submit an arbitrary number of items.
 
 ## Installation
 
 ```bash
-npm install @kennedyrose/repeatable
+npm install repeatable
 ```
 
 or
 
 ```bash
-yarn add @kennedyrose/repeatable
+yarn add repeatable
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ yarn add @kennedyrose/repeatable
 ```
 
 ```javascript
-import Repeatable from '@kennedyrose/repeatable'
+import Repeatable from 'repeatable'
 
 new Repeatable({
 	template: `.person-template`,
