@@ -32,6 +32,13 @@ export default class Repeatable{
 			this.create()
 		}
 
+		// Set initial count to minimum
+		if(this.options.min){
+			for(let i = 0; i < this.options.min; i++){
+				this.create()
+			}
+		}
+
 		// Add event listeners
 		if(this.options.button){
 			this.button = this.options.button
@@ -46,6 +53,10 @@ export default class Repeatable{
 		
 	}
 	create(){
+		if(this.options.max && this.total >= this.options.max){
+			return
+		}
+
 		let el = this.template.cloneNode(true)
 
 		// Add remove button
@@ -62,17 +73,19 @@ export default class Repeatable{
 		// Add element
 		this.parent.appendChild(el)
 		this.total++
-
-		// Increment inputs
-		this.incrementInputs()
+		this.updateUi()
 
 		this.toggleEmpty(`hide`)
 	}
 	remove(el){
+		if(this.options.min && this.total <= this.options.min){
+			return
+		}
+
 		this.parent.removeChild(el)
 		this.total--
 		if(this.total < 0) this.total = 0
-		this.incrementInputs()
+		this.updateUi()
 		if(this.total === 0){
 			this.toggleEmpty(`show`)
 		}
@@ -82,7 +95,7 @@ export default class Repeatable{
 			this.emptyState.style.display = state === `show` ? `block` : `none`
 		}
 	}
-	incrementInputs(){
+	updateUi(){
 		if(this.options.incrementInputs){
 			let items = this.parent.querySelectorAll(this.options.template)
 			for(let i = 0; i < items.length; i++){
@@ -99,6 +112,29 @@ export default class Repeatable{
 
 
 					}
+				}
+			}
+		}
+
+		if(this.button && this.options.max){
+			if(this.total >= this.options.max){
+				this.button.disabled = true
+			}
+			else{
+				this.button.disabled = false
+			}
+		}
+		if(this.options.min && this.options.removeButton){
+			if(this.total <= this.options.min){
+				let removeButtons = this.parent.querySelectorAll(this.options.removeButton)
+				for(let i = 0; i < removeButtons.length; i++){
+					removeButtons[i].disabled = true
+				}
+			}
+			else{
+				let removeButtons = this.parent.querySelectorAll(this.options.removeButton)
+				for(let i = 0; i < removeButtons.length; i++){
+					removeButtons[i].disabled = false
 				}
 			}
 		}

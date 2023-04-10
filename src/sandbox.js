@@ -5,6 +5,8 @@ new Repeatable({
 	button: `.add-person`,
 	removeButton: `.remove-person`,
 	emptyState: `.no-people`,
+	min: 1,
+	max: 5,
 })
 
 const form = document.querySelector(`#people-form`)
