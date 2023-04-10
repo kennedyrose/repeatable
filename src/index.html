@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <form id="people-form">
+      <ul>
+        <li class="person-template">
+          <input name='people[][firstName]' placeholder='First Name' />
+          <input name='people[][lastName]' placeholder='Last Name' />
+          <button class="remove-person">Remove person</button>
+        </li>
+      </ul>
+      
+      <p class="no-people">No people on this list! Add one to get started.</p>
+      
+      <button class="add-person">Add person</button>
+      <button type="submit">Submit</button>
+    </form>
+    <script type="module" src="/sandbox.js"></script>
+  </body>
+</html>
