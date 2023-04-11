@@ -1,7 +1,9 @@
 import path from 'path'
 
 // If demo site
-let build = null
+let build = {
+	outDir: '../dist',
+}
 if(!process.env.DEMO){
 	build = {
 		outDir: '../dist',

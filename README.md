@@ -2,6 +2,8 @@
 
 A simple, lightweight, and no-dependency library for repeating elements with a button click. Useful for input groups in forms that need to be repeated so the user can submit an arbitrary number of items.
 
+[Demo]()
+
 ## Installation
 
 ```bash
